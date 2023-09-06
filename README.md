@@ -9,5 +9,7 @@ Video frame interpolation is an important low-level vision task, which can incre
 ## Framework
 Overall framework of our WaveletVFI that can interpolate frames dynamically in wavelet domain.
 
+![](./data/waveletvfi.png)
+
 ## Code
 Coming soon!
