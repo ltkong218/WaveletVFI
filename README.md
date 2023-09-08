@@ -1,5 +1,5 @@
 # Dynamic Frame Interpolation in Wavelet Domain
-The official PyTorch implementation of WaveletVFI (TIP 2023) (Only for Evaluation).
+The official PyTorch implementation of [WaveletVFI](https://arxiv.org/abs/2309.03508) (TIP 2023) (Only for Evaluation).
 
 Authors: [Lingtong Kong](https://scholar.google.com.hk/citations?user=KKzKc_8AAAAJ&hl=zh-CN), [Boyuan Jiang](https://byjiang.com/), Donghao Luo, Wenqing Chu, [Ying Tai](https://tyshiwo.github.io/), Chengjie Wang, [Jie Yang](http://www.pami.sjtu.edu.cn/jieyang)
 
