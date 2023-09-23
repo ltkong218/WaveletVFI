@@ -20,7 +20,7 @@ Overall framework of our WaveletVFI that can interpolate frames dynamically in w
 
 ## Evaluation
 
-1. Download our pre-trained models in this [link](https://www.dropbox.com/sh/hrewbpedd2cgdp3/AADbEivu0-CKDQcHtKdMNJPJa?dl=0), and then put file <code> checkpoints</code> into the root dir.
+1. Download our pre-trained models in this [link](https://www.dropbox.com/scl/fo/6cyqswzyfjggxtbkc3qfs/h?rlkey=dx33nimhpkw81n39uvqud1d2s&dl=0), and then put file <code> checkpoints</code> into the root dir.
 
 2. Run the following scripts to evaluate on Vimeo90K test dataset.
 <pre><code>$ python benchmark/Vimeo90K.py</code></pre>
