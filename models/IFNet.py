@@ -10,7 +10,7 @@ def centralize(img0, img1):
 
 
 def resize(x, scale_factor):
-    return F.interpolate(x, scale_factor=scale_factor, mode='bilinear', align_corners=False)
+    return F.interpolate(x, scale_factor=scale_factor, mode='bilinear', align_corners=False, recompute_scale_factor=True)
 
 
 def convrelu(in_channels, out_channels, kernel_size=3, stride=1, padding=1, dilation=1, groups=1, bias=True):
