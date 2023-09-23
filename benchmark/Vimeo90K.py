@@ -20,13 +20,14 @@ def PSNR(img_pred, img_gt):
     return psnr
 
 model = WaveletVFI()
-model.load_state_dict(convert(torch.load('./models/waveletvfi_latest.pth', map_location='cpu')))
+model.load_state_dict(convert(torch.load('./checkpoints/waveletvfi_latest.pth', map_location='cpu')))
 model.eval()
 model.to(device)
 
 th = None
 
-path = '/youtu_action_data/NTIRE/vimeo_triplet/'
+# Replace the 'path' with your Vimeo90K dataset absolute path.
+path = '/home/ltkong/Datasets/Vimeo90K/vimeo_triplet/'
 f = open(path + 'tri_testlist.txt', 'r')
 psnr_list = []
 ssim_list = []
@@ -52,4 +53,4 @@ for i in f:
     psnr_list.append(psnr)
     ssim_list.append(ssim)
     flops_list.append(macs / 1e9)
-    print("Avg PSNR: {:.3f} SSIM: {:.4f} FLOPs(G): {:.3f}".format(np.mean(psnr_list), np.mean(ssim_list), np.mean(flops_list)))
+    print("Average PSNR: {:.3f} SSIM: {:.4f} FLOPs(G): {:.3f}  Current Compression Threshold: {:.4f}".format(np.mean(psnr_list), np.mean(ssim_list), np.mean(flops_list), outputs[-1].view(-1)[0].cpu().numpy()))
