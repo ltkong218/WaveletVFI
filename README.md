@@ -1,5 +1,5 @@
 # Dynamic Frame Interpolation in Wavelet Domain
-The official PyTorch implementation of [WaveletVFI](https://arxiv.org/abs/2309.03508) (TIP 2023) (Only for Evaluation).
+The official PyTorch implementation of [WaveletVFI](https://arxiv.org/abs/2309.03508) (TIP 2023).
 
 Authors: [Lingtong Kong](https://scholar.google.com.hk/citations?user=KKzKc_8AAAAJ&hl=zh-CN), [Boyuan Jiang](https://byjiang.com/), Donghao Luo, Wenqing Chu, [Ying Tai](https://tyshiwo.github.io/), Chengjie Wang, [Jie Yang](http://www.pami.sjtu.edu.cn/jieyang)
 
@@ -11,5 +11,23 @@ Overall framework of our WaveletVFI that can interpolate frames dynamically in w
 
 ![](./data/waveletvfi.png)
 
-## Code
-Coming soon!
+## Preparation
+1. We have verified that this repository supports Python 3.6/3.7, PyTorch 1.9.1/1.10.1.
+2. <code>$ cd pytorch_wavelets && python setup.py install</code>
+3. <code>$ pip install onnx imageio</code>
+4. Download training and test datasets: [Vimeo90K](http://toflow.csail.mit.edu/)
+5. Set the right dataset path on your machine.
+
+## Evaluation
+
+1. Download our pre-trained models in this [link](https://www.dropbox.com/sh/hrewbpedd2cgdp3/AADbEivu0-CKDQcHtKdMNJPJa?dl=0), and then put file <code> checkpoints</code> into the root dir.
+
+2. Run the following scripts to evaluate on Vimeo90K test dataset.
+<pre><code>$ python benchmark/Vimeo90K.py</code></pre>
+
+## Training
+1. Stage1, pre-train WaveletVFI on Vimeo90K training dataset statically
+<pre><code>$ python -m torch.distributed.launch --nproc_per_node=4 train_vimeo90k.py --world_size 4 --epochs 300 --batch_size 6 --lr_start 1e-4 --lr_end 1e-5</code></pre>
+
+2. Stage2, load pre-trained WaveletVFI in Stage1 and train WaveletVFI on Vimeo90K training dataset dynamically
+<pre><code>$ python -m torch.distributed.launch --nproc_per_node=4 train_vimeo90k.py --world_size 4 --epochs 100 --batch_size 6 --lr_start 1e-4 --lr_end 1e-5 --dynamic 'true'</code></pre>
