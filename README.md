@@ -31,3 +31,8 @@ Overall framework of our WaveletVFI that can interpolate frames dynamically in w
 
 2. Stage2, load pre-trained WaveletVFI in Stage1 and train WaveletVFI on Vimeo90K training dataset dynamically
 <pre><code>$ python -m torch.distributed.launch --nproc_per_node=4 train_vimeo90k.py --world_size 4 --epochs 100 --batch_size 6 --lr_start 1e-4 --lr_end 1e-5 --dynamic 'true'</code></pre>
+
+## Visualization
+Predicted target frame and multi-scale sparse valid masks on diverse datasets.
+
+![](./data/sparse_valid_masks.png)
